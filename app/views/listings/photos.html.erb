@@ -49,7 +49,7 @@
                 // meに"complete"イベントを定義
                 me.on("complete", function(file) {
                     $(file.previewTemplate).find('.dz-remove').text('削除する');
-                })
+                });
                 // call list function in photos_controller.rb with get method
                 $.ajax({
                     type: 'GET',
@@ -57,6 +57,7 @@
                     data: { listing_id: <%= @listing.id %>},
                     dataType: 'json',
                     success: function(data) {
+                        console.log(data);
                         $.each(data.images, function(key, value) {
                             if (data.images != undefined && data.images.length > 0) {
                                 me.emit('addedfile', value);
